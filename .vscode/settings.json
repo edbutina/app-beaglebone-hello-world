@@ -1,0 +1,19 @@
+{
+	"BEAGLEBONE": {
+		/* Target Device Settings */
+		"TARGET_IP":"192.168.0.141",
+
+		/* Project Settings */
+		"PROGRAM":"hello.bin",
+
+		/* Yocto SDK Configuration */
+		"ARCH":"arm-poky-linux-gnueabi",
+        "OECORE_NATIVE_SYSROOT":"/opt/poky/4.0.10/sysroots/x86_64-pokysdk-linux",
+        "SDKTARGETSYSROOT": "/opt/poky/4.0.10/sysroots/cortexa8hf-neon-poky-linux-gnueabi",
+
+		/* Yocto SDK Constants */
+        "CC_PREFIX": "${config:BEAGLEBONE.OECORE_NATIVE_SYSROOT}/usr/bin/${config:BEAGLEBONE.ARCH}/${config:BEAGLEBONE.ARCH}-",
+		"CXX": "${config:BEAGLEBONE.CC_PREFIX}g++ -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a8 -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=${config:BEAGLEBONE.SDKTARGETSYSROOT}",
+		"CC": "${config:BEAGLEBONE.CC_PREFIX}gcc -mfpu=neon -mfloat-abi=hard -mcpu=cortex-a8 -fstack-protector-strong  -O2 -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security --sysroot=${config:BEAGLEBONE.SDKTARGETSYSROOT}",
+	}
+}
